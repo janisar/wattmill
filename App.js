@@ -1,23 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from "react-redux";
+import WattMillApp from "./src/modules/WattMillApp";
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from "redux-thunk";
+import rootReducer from "./src/reducers/rootReducer";
+
+const middleware = [thunk];
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+let store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <WattMillApp/>
+            </Provider>
+        );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,5 +1,12 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "WattMill",
+    "version": "0.0.1",
+    "icon": "download.png",
+    "sdkVersion": "27.0.0",
+    "description": "It is the future",
+    "android": {
+      "package": "ee.ardel.mill"
+    }
   }
 }
